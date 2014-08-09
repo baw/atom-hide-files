@@ -1,5 +1,14 @@
 {
   "name": "hide-files",
   "main": "index.coffee",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "repository": "https://github.com/imamathwiz/atom-hide-files",
+  "license": "MIT",
+  "author": {
+    "name": "Brian Weiser",
+    "url": "https://github.com/imamathwiz"
+  },
+  "bugs": {
+    "url": "https://github.com/imamathwiz/atom-hide-files/issues"
+  }
 }
