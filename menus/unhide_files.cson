@@ -1,0 +1,14 @@
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Hide Files'
+      'submenu': [
+        {
+          'label': 'Unhide project files'
+          'command': 'hide-files:unhide-project-files'
+        }
+      ]
+    ]
+  }
+]

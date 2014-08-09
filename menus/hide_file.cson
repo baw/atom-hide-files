@@ -1,0 +1,5 @@
+'context-menu':
+  '.tree-view .file':
+    'Hide file': 'hide-files:hide-file'
+  '.tree-view .directory .header':
+    'Hide Directory': 'hide-files:hide-directory'
