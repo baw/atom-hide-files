@@ -1,6 +1,6 @@
 #Hide Files in the file tree
 
-Easily focus on the task at hand be hiding irrelevantly files and directories.
+Easily focus on the task at hand by hiding irrelevantly files and directories.
 
 ##Feature
 * hide file or directory
