@@ -1,11 +1,12 @@
-file_functions = require "./lib/hide_files.coffee"
+HideItems = require "./lib/hide_items.coffee"
 
 module.exports =
   activate: (state) ->
+    @hideItems = new HideItems()
     atom.workspaceView.command "hide-files:hide-file",
-                               file_functions.hide_file
+                               @hideItems.hideItemCommand.bind(@hideItems)
     atom.workspaceView.command "hide-files:hide-directory",
-                               file_functions.hide_file
+                               @hideItems.hideItemCommand.bind(@hideItems)
     
     atom.workspaceView.command "hide-files:unhide-project-files",
-                               file_functions.unhide_files
+                               @hideItems.unhideItems.bind(@hideItems)
