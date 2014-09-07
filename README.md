@@ -9,10 +9,14 @@ Easily focus on the task at hand by hiding irrelevantly files and directories.
 ##Usage
 * Hiding
   * hide file or directory from context menu in tree view
-  * hide file by using `SHIFT + CMD + H`
+  * hide file by using
+    * Mac: `SHIFT + CMD + H`
+    * Windows/Linux: 'SHIFT + CTRL + H'
 * Unhide everything
-  * unhide by using `SHIFT + CMD + U` or with the command bar
+  * unhide by using with the command bar or keys:
+    * Mac: `SHIFT + CMD + U`
+    * Windows/Linux: `SHIFT + CTRL + U`
 
 ##Todos
 * add ability to save hidden files after reopening atom
-* have ability to save 'hidden files' state to reload at later time 
+* have ability to save 'hidden files' state to reload at later time
