@@ -10,9 +10,10 @@ class HideItems
   
   hideItemCommand: ->
     item = utilites.getActiveSidebarElement()
-    @hideItem(item)
     
-    @items.push(item)
+    if item?
+      @hideItem(item)
+      @items.push(item)
   
   unhideItems: ->
     for item in @items
