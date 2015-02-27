@@ -1,5 +1,7 @@
 utilities =
   getActiveSidebarElement: ->
-    atom.workspaceView.find(".tree-view .selected")?.view?()
+    @getAtomView.find(".tree-view .selected")?.view?()
+  getAtomView: ->
+    @atomView ||= atom.views.getView(atom.workspace)
 
 module.exports = utilities

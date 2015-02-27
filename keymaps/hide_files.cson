@@ -1,7 +1,7 @@
-'.platform-darwin .editor':
+'.platform-darwin .atom-text-editor':
   'shift-cmd-U': 'hide-files:unhide-project-files',
   'shift-cmd-H': 'hide-files:hide-file'
 
-'.platform-win32 .editor, .platform-linux .editor':
+'.platform-win32 .atom-text-editor, .platform-linux .atom-text-editor':
   'shift-ctrl-U': 'hide-files:unhide-project-files',
   'shift-ctrl-H': 'hide-files:hide-file'
