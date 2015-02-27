@@ -6,45 +6,35 @@ class HideItems
   constructor: (@itemPaths = []) ->
     @directories = []
   
-  addProjectRootEvent: ($item) ->
-    $projectRoot = $item.closest ".project-root"
-    $projectRoot.off "click.rehideItems"
-    $projectRoot.on "click.rehideItems", ".directory", @rehideItemsEventHandler.bind(this)
+  addStyleTag: ->
+    @_styleTag = $("<style>").attr "id", "hide-items"
+    $("head").append @_styleTag
   
   hideItem: ($item) ->
-    $item.addClass "hide-files-hide"
+    path = @_getItemPath $item
+    console.log path
+    @_getStyleTag().append """
+      li:has(> .icon[data-path='#{ path }']) {
+        display: none
+      }
+    """
   
   hideItemCommand: ->
     $item = utilities.getActiveSidebarElement()
     
     if $item?
       @hideItem $item
-      @itemPaths.push $item.find("span").data("path")
-      
-      @addProjectRootEvent $item
-  
-  rehideItems: ->
-    for itemPath in @itemPaths
-      $item = @_getItemForPath itemPath
-      @hideItem $item
-  
-  rehideItemsEventHandler: (e) ->
-    if e.currentTarget.classList.contains "expanded"
-      return
-    
-    setTimeout @rehideItems.bind(this), 0
   
   unhideItems: ->
-    for itemPath in @itemPaths
-      $item = @_getItemForPath(itemPath)
-      $item.removeClass "hide-files-hide"
-    @itemPaths = []
-    
-    for directory in @directories
-      directory.removeEventListener "click", @rehideItemsEventHandler.bind(this)
-    @directories = []
+    @_getStyleTag.html("")
   
   _getItemForPath: (path) ->
     $(".icon[data-path='" + path + "']").closest "li"
   
+  _getItemPath: ($item) ->
+    $item.find("span").data "path"
+  
+  _getStyleTag: ->
+    @_styleTag ||= $("#hide-items")
+    
 module.exports = HideItems

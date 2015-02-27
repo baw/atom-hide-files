@@ -10,3 +10,5 @@ module.exports =
     
     atom.commands.add "atom-workspace", "hide-files:unhide-project-files",
                                @hideItems.unhideItems.bind @hideItems
+    
+    @hideItems.addStyleTag()
