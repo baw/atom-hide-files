@@ -1,23 +1,52 @@
-utilites = require "./utilities.coffee"
+utilities = require "./utilities.coffee"
 
 class HideItems
   atom.deserializers.add this
   
-  constructor: (@items = []) ->
+  constructor: (@itemPaths = []) ->
+    @directories = []
   
-  hideItem: (item) ->
-    item.classList.add "hide-files-hide"
+  addProjectRootEvent: ($item) ->
+    $projectRoot = $item.closest ".project-root"
+    $projectRoot.off "click.rehideItems"
+    $projectRoot.on "click.rehideItems", ".directory", @rehideItemsEventHandler.bind(this)
+  
+  hideItem: ($item) ->
+    $item.addClass "hide-files-hide"
   
   hideItemCommand: ->
-    item = utilites.getActiveSidebarElement()
+    $item = utilities.getActiveSidebarElement()
     
-    if item?
-      @hideItem item
-      @items.push item
+    if $item?
+      @hideItem $item
+      @itemPaths.push $item.find("span").data("path")
+      
+      @addProjectRootEvent $item
+  
+  rehideItems: ->
+    for itemPath in @itemPaths
+      $item = @_getItemForPath itemPath
+      @hideItem $item
+  
+  rehideItemsEventHandler: (e) ->
+    if e.currentTarget.classList.contains "expanded"
+      return
+    
+    setTimeout @rehideItems.bind(this), 0
+  
+  removeProjectRootEvent: ->
+    $projectRoot = $item.closest ".project-root"
+    $projectRoot.off "click.rehideItems"
   
   unhideItems: ->
-    for item in @items
-      item.classList.remove "hide-files-hide"
-    @items = []
+    for itemPath in @itemPaths
+      $item = @_getItemForPath(itemPath)
+      $item.removeClass "hide-files-hide"
+    @itemPaths = []
+    
+    @removeProjectRootEvent()
+  
+  _getItemForPath: (path) ->
+    $(".icon[data-path='" + path + "']").closest "li"
   
 module.exports = HideItems
