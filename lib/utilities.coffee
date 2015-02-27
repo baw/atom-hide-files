@@ -1,6 +1,6 @@
 utilities =
   getActiveSidebarElement: ->
-    @getAtomView.find(".tree-view .selected")?.view?()
+    $(@getAtomView).find(".tree-view .selected")
   getAtomView: ->
     @atomView ||= atom.views.getView(atom.workspace)
 
