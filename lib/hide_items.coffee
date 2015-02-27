@@ -6,7 +6,7 @@ class HideItems
   constructor: (@items = []) ->
   
   hideItem: (item) ->
-    item.addClass "hide-files-hide"
+    item.classList.add "hide-files-hide"
   
   hideItemCommand: ->
     item = utilites.getActiveSidebarElement()
@@ -17,7 +17,7 @@ class HideItems
   
   unhideItems: ->
     for item in @items
-      item.removeClass "hide-files-hide"
+      item.classList.remove "hide-files-hide"
     @items = []
   
 module.exports = HideItems
