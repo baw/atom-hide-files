@@ -1,7 +1,7 @@
 utilites = require "./utilities.coffee"
 
 class HideItems
-  atom.deserializers.add(this)
+  atom.deserializers.add this
   
   constructor: (@items = []) ->
   
@@ -12,8 +12,8 @@ class HideItems
     item = utilites.getActiveSidebarElement()
     
     if item?
-      @hideItem(item)
-      @items.push(item)
+      @hideItem item
+      @items.push item
   
   unhideItems: ->
     for item in @items
