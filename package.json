@@ -2,7 +2,7 @@
   "name": "hide-files",
   "main": "index.coffee",
   "version": "0.1.5",
-  "description": "Hide files and folders in file tree",
+  "description": "Hide files and folders in the file tree",
   "repository": "https://github.com/imamathwiz/atom-hide-files",
   "license": "MIT",
   "author": {
