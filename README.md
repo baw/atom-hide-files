@@ -18,5 +18,4 @@ Easily focus on the task at hand by hiding irrelevantly files and directories.
     * Windows/Linux: `SHIFT + CTRL + U`
 
 ##Todos
-* add ability to save hidden files after reopening atom
-* have ability to save 'hidden files' state to reload at later time
+* add ability to save state of hidden files/folders and rehide files/folders when the project is reopened.
