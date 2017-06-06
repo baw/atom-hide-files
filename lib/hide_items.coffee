@@ -30,6 +30,15 @@ class HideItems
 
     return node
 
+  getPathOfItem: (item) ->
+    path = ""
+    if item.file?
+      path = item.file.path
+    else
+      path = item.directory.path
+
+    path
+
   hideItem: (item) ->
     item.classList.add "hide-files-hide"
 
@@ -61,6 +70,22 @@ class HideItems
         node = treeView.entryForPath(path)
         @hideItem node
 
+  removeItemByPath: (path) ->
+    @items = @items.filter (item) =>
+      itemPath = @getPathOfItem(item)
+      itemPath != path
+
+  removeParentExpandEvents: (node) ->
+    @loopThroughParents node, (parent) =>
+      path = parent.directory.path
+      event = @parentPathsToDirectoryEvent[path]
+      if event
+        if event.count > 1
+          event.count -= 1
+        else
+          event.eventHandler.dispose()
+          delete @parentPathsToDirectoryEvent[path]
+
   resetupEvents: ->
     utilites.getTreeView().then (treeView) =>
       Object.keys(@parentPathsToDirectoryEvent).forEach (path) =>
@@ -68,6 +93,30 @@ class HideItems
         event = @parentPathsToDirectoryEvent[path]
         event.eventHandler.dispose()
         event.eventHandler = directory.onDidExpand @directoryDidExpandHandler.bind @
+
+  unHideChildren: (event) ->
+    node = utilites.getActiveSidebarElement()
+    directory = node.directory
+    entries = directory.entries
+
+    if @parentPathsToDirectoryEvent[directory.path].count > 1
+      @parentPathsToDirectoryEvent[directory.path].count -= 1
+    else
+      @parentPathsToDirectoryEvent[directory.path].eventHandler.dispose()
+      delete @parentPathsToDirectoryEvent[directory.path]
+
+    @removeParentExpandEvents node
+
+    utilites.getTreeView().then (treeView) =>
+      Object.keys(entries).forEach (key) =>
+        entry = entries[key]
+        item = treeView.entryForPath(entry.path)
+        if item
+          @unHideItem item
+          @removeItemByPath entry.path
+
+  unHideItem: (item) ->
+    item.classList.remove "hide-files-hide"
 
   unhideItems: ->
     for item in @items

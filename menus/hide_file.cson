@@ -1,7 +1,10 @@
 'context-menu':
   '.tree-view .file': [
-    { label: 'Hide file', command: 'hide-files:hide-file'}
+    { label: 'Hide file', command: 'hide-files:hide-file' }
   ]
   '.tree-view .directory .header': [
-    { label: 'Hide Directory', command: 'hide-files:hide-directory'}
+    { type: 'separator' },
+    { label: 'Hide Directory', command: 'hide-files:hide-directory' },
+    { label: 'Unhide Children', command: 'hide-files:unhide-children' },
+    { type: 'separator' }
   ]

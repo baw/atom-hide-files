@@ -7,6 +7,7 @@ module.exports =
                                @hideItems.hideItemCommand.bind @hideItems
     atom.commands.add "atom-workspace", "hide-files:hide-directory",
                                @hideItems.hideItemCommand.bind @hideItems
-    
     atom.commands.add "atom-workspace", "hide-files:unhide-project-files",
                                @hideItems.unhideItems.bind @hideItems
+    atom.commands.add "atom-workspace", "hide-files:unhide-children",
+                               @hideItems.unHideChildren.bind @hideItems
