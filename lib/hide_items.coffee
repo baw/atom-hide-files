@@ -19,6 +19,15 @@ class HideItems
           count: 1
         }
 
+  decrementEvent: (path) ->
+    event = @parentPathsToDirectoryEvent[path]
+    if event
+      if event.count > 1
+        event.count -= 1
+      else
+        event.eventHandler.dispose()
+        delete @parentPathsToDirectoryEvent[path]
+
   directoryDidExpandHandler: ->
     @rehideItems()
     @resetupEvents()
@@ -77,14 +86,7 @@ class HideItems
 
   removeParentExpandEvents: (node) ->
     @loopThroughParents node, (parent) =>
-      path = parent.directory.path
-      event = @parentPathsToDirectoryEvent[path]
-      if event
-        if event.count > 1
-          event.count -= 1
-        else
-          event.eventHandler.dispose()
-          delete @parentPathsToDirectoryEvent[path]
+      @decrementEvent parent.directory.path
 
   resetupEvents: ->
     utilites.getTreeView().then (treeView) =>
@@ -99,11 +101,7 @@ class HideItems
     directory = node.directory
     entries = directory.entries
 
-    if @parentPathsToDirectoryEvent[directory.path].count > 1
-      @parentPathsToDirectoryEvent[directory.path].count -= 1
-    else
-      @parentPathsToDirectoryEvent[directory.path].eventHandler.dispose()
-      delete @parentPathsToDirectoryEvent[directory.path]
+    @decrementEvent directory.path
 
     @removeParentExpandEvents node
 
