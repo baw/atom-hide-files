@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.2.0
+
+* fixed files/directories not rehiding after their parent directory is closed and expended
+* added command to unhide child files/directories of a directory
+
 ## 0.1.5
 
 * cleaned up code

@@ -16,6 +16,8 @@ Easily focus on the task at hand by hiding irrelevantly files and directories.
   * unhide by using with the command bar or keys:
     * Mac: `SHIFT + CMD + U`
     * Windows/Linux: `SHIFT + CTRL + U`
+* Unhide children of a directory
+  * unhide by right clicking a directory and selecting "Unhide Children"
 
 ##Todos
 * add ability to save state of hidden files/folders and rehide files/folders when the project is reopened.
