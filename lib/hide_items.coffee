@@ -1,12 +1,11 @@
 utilites = require "./utilities.coffee"
 
 class HideItems
-  atom.deserializers.add this
-
-  constructor: (@items = []) ->
-    @rehideItems
-
+  constructor: (itemsPaths, parents) ->
+    @items = []
     @parentPathsToDirectoryEvent = {}
+
+    @deserialize(itemsPaths, parents)
 
   addParentExpandEvents: (node) ->
     @loopThroughParents node, (parent) =>
@@ -27,6 +26,20 @@ class HideItems
       else
         event.eventHandler.dispose()
         delete @parentPathsToDirectoryEvent[path]
+
+  deserialize: (itemsPaths, parents) ->
+    utilites.getTreeView().then (treeView) =>
+      @items = itemsPaths.map (path) =>
+        item = treeView.entryForPath(path)
+        @hideItem item
+        item
+
+      parents.forEach (parentObj) =>
+        parent = treeView.entryForPath(parentObj.path).directory
+        @parentPathsToDirectoryEvent[parent.path] = {
+          eventHandler: parent.onDidExpand(@directoryDidExpandHandler.bind(@)),
+          count: parentObj.count
+        }
 
   directoryDidExpandHandler: ->
     @rehideItems()
@@ -95,6 +108,19 @@ class HideItems
         event = @parentPathsToDirectoryEvent[path]
         event.eventHandler.dispose()
         event.eventHandler = directory.onDidExpand @directoryDidExpandHandler.bind @
+
+  serialize: ->
+    state = {}
+    result.itemsPaths = @items.map (item) =>
+      @getPathOfItem(item)
+
+    result.parents = Object.keys(@parentPathsToDirectoryEvent).map (path) =>
+      {
+        count: @parentPathsToDirectoryEvent[path].count,
+        path: path
+      }
+
+    state
 
   unHideChildren: (event) ->
     node = utilites.getActiveSidebarElement()

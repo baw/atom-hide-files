@@ -2,7 +2,7 @@ HideItems = require "./lib/hide_items.coffee"
 
 module.exports =
   activate: (state) ->
-    @hideItems = new HideItems()
+    @hideItems = new HideItems(state.itemsPaths, state.parents)
     atom.commands.add "atom-workspace", "hide-files:hide-file",
                                @hideItems.hideItemCommand.bind @hideItems
     atom.commands.add "atom-workspace", "hide-files:hide-directory",
@@ -11,3 +11,6 @@ module.exports =
                                @hideItems.unhideItems.bind @hideItems
     atom.commands.add "atom-workspace", "hide-files:unhide-children",
                                @hideItems.unHideChildren.bind @hideItems
+
+  serialize: () ->
+    @hideItems.serialize()
