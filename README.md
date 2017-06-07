@@ -1,12 +1,12 @@
-#Hide Files in the file tree
+# Hide Files in the file tree
 
 Easily focus on the task at hand by hiding irrelevantly files and directories.
 
-##Feature
+## Feature
 * hide file or directory
 * unhide all hidden files
 
-##Usage
+## Usage
 * Hiding
   * hide file or directory from context menu in tree view
   * hide file by using
@@ -19,5 +19,5 @@ Easily focus on the task at hand by hiding irrelevantly files and directories.
 * Unhide children of a directory
   * unhide by right clicking a directory and selecting "Unhide Children"
 
-##Todos
+## Todos
 * add ability to save state of hidden files/folders and rehide files/folders when the project is reopened.
