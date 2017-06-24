@@ -19,5 +19,17 @@ Easily focus on the task at hand by hiding irrelevantly files and directories.
 * Unhide children of a directory
   * unhide by right clicking a directory and selecting "Unhide Children"
 
-## Todos
-* add ability to save state of hidden files/folders and rehide files/folders when the project is reopened.
+* Hide files specified in .hideInTxtEd
+ ```
+ #this is an example .hideInTxtEd file
+ #empty lines are ignored
+
+ #any matching file/dir path (relative to the current dir) will be hidden:
+ somedir
+ foo.txt
+ bar.txt
+ otherdir/baz.txt
+ otherdir/yetanotherdir
+ #hide this file also
+ .hideInTxtEd
+ ```
