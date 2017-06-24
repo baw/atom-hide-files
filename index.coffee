@@ -1,4 +1,5 @@
 HideItems = require "./lib/hide_items.coffee"
+require "./lib/hideFilesNamedInTxtFile.js"
 
 module.exports =
   activate: (state) ->
