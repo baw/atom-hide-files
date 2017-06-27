@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.3.0
+
+* Automatically hide files/directories that are named with relative paths in .hideInTxtEd
+
+
 ## 0.2.0
 
 * fixed files/directories not rehiding after their parent directory is closed and expended
