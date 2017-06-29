@@ -1,6 +1,6 @@
 {
   "name": "hide-files",
-  "main": "index.coffee",
+  "main": "index.js",
   "version": "0.2.0",
   "description": "Hide files and folders in the file tree",
   "repository": "https://github.com/imamathwiz/atom-hide-files",

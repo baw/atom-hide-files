@@ -1,10 +1,13 @@
-'context-menu':
-  '.tree-view .file': [
-    { label: 'Hide file', command: 'hide-files:hide-file' }
-  ]
-  '.tree-view .directory .header': [
-    { type: 'separator' },
-    { label: 'Hide Directory', command: 'hide-files:hide-directory' },
-    { label: 'Unhide Children', command: 'hide-files:unhide-children' },
-    { type: 'separator' }
-  ]
+{
+  "context-menu": {
+    ".tree-view .file": [
+      { "label": "Hide file", "command": "hide-files:hide-file" }
+    ],
+    ".tree-view .directory .header": [
+      { "type": "separator" },
+      { "label": "Hide Directory", "command": "hide-files:hide-directory" },
+      { "label": "Unhide Children", "command": "hide-files:unhide-children" },
+      { "type": "separator" }
+    ]
+  }
+}

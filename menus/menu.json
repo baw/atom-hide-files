@@ -1,13 +1,13 @@
-'menu': [
-  {
-    label: 'Packages'
-    submenu: [
-      label: 'Hide Files'
-      submenu: [
-        {
-          label: 'Unhide project files', command: 'hide-files:unhide-project-files'
-        }
-      ]
+{
+  "context-menu": {
+    ".tree-view .file": [
+      { "label": "Hide file", "command": "hide-files:hide-file" }
+    ],
+    ".tree-view .directory .header": [
+      { "type": "separator" },
+      { "label": "Hide Directory", "command": "hide-files:hide-directory" },
+      { "label": "Unhide Children", "command": "hide-files:unhide-children" },
+      { "type": "separator" }
     ]
   }
-]
+}

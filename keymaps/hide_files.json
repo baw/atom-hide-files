@@ -1,7 +1,11 @@
-'.platform-darwin':
-  'shift-cmd-U': 'hide-files:unhide-project-files',
-  'shift-cmd-H': 'hide-files:hide-file'
+{
+  ".platform-darwin": {
+    "shift-cmd-U": "hide-files:unhide-project-files",
+    "shift-cmd-H": "hide-files:hide-file"
+  },
 
-'.platform-win32, .platform-linux':
-  'shift-ctrl-U': 'hide-files:unhide-project-files',
-  'shift-ctrl-H': 'hide-files:hide-file'
+  ".platform-win32, .platform-linux": {
+    "shift-ctrl-U": "hide-files:unhide-project-files",
+    "shift-ctrl-H": "hide-files:hide-file"
+  }
+}
