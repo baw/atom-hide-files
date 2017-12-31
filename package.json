@@ -1,7 +1,7 @@
 {
   "name": "hide-files",
   "main": "index.js",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Hide files and folders in the file tree",
   "repository": "git@github.com:baw/atom-hide-files.git",
   "license": "MIT",
