@@ -3,13 +3,13 @@
   "main": "index.js",
   "version": "0.2.0",
   "description": "Hide files and folders in the file tree",
-  "repository": "https://github.com/imamathwiz/atom-hide-files",
+  "repository": "git@github.com:baw/atom-hide-files.git",
   "license": "MIT",
   "author": {
     "name": "Brian Weiser",
-    "url": "https://github.com/imamathwiz"
+    "url": "https://github.com/baw"
   },
   "bugs": {
-    "url": "https://github.com/imamathwiz/atom-hide-files/issues"
+    "url": "https://github.com/baw/atom-hide-files/issues"
   }
 }
